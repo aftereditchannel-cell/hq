@@ -1,0 +1,81 @@
++ export DEBIAN_FRONTEND=noninteractive
++ DEBIAN_FRONTEND=noninteractive
++ echo '=== [1/4] electron binary ==='
+=== [1/4] electron binary ===
++ cd /home/user/hq
++ node node_modules/electron/install.js
++ echo ELECTRON_OK
+ELECTRON_OK
++ echo '=== [2/4] android sdk ==='
+=== [2/4] android sdk ===
++ export JAVA_HOME=/home/user/tools/jdk-21.0.12+8
++ JAVA_HOME=/home/user/tools/jdk-21.0.12+8
++ export ANDROID_HOME=/home/user/tools/android-sdk
++ ANDROID_HOME=/home/user/tools/android-sdk
++ export PATH=/home/user/tools/jdk-21.0.12+8/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
++ PATH=/home/user/tools/jdk-21.0.12+8/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
++ '[' '!' -x /home/user/tools/jdk-21.0.12+8/bin/java ']'
++ echo 'JDK MISSING - redownloading'
+JDK MISSING - redownloading
++ mkdir -p /home/user/tools
++ cd /home/user/tools
++ curl -sL -o jdk.tgz https://api.adoptium.net/v3/binary/latest/21/ga/linux/x64/jdk/hotspot/normal/eclipse
++ tar xzf jdk.tgz
++ rm jdk.tgz
++ ls -d /home/user/tools/jdk-21.0.12+8
+/home/user/tools/jdk-21.0.12+8
++ head -2
++ /home/user/tools/jdk-21.0.12+8/bin/java -version
+openjdk version "21.0.12" 2026-07-21 LTS
+OpenJDK Runtime Environment Temurin-21.0.12+8 (build 21.0.12+8-LTS)
++ mkdir -p /home/user/tools/android-sdk
++ '[' '!' -x /home/user/tools/android-sdk/cmdline-tools/latest/bin/sdkmanager ']'
++ cd /tmp
++ rm -rf cltools
++ mkdir cltools
++ cd cltools
++ curl -sL -o cl.zip https://dl.google.com/android/repository/commandlinetools-linux-11076708_latest.zip
++ python3 -c 'import zipfile;zipfile.ZipFile('\''cl.zip'\'').extractall('\''.'\'')'
++ mkdir -p /home/user/tools/android-sdk/cmdline-tools
++ rm -rf /home/user/tools/android-sdk/cmdline-tools/latest
++ mv cmdline-tools /home/user/tools/android-sdk/cmdline-tools/latest
++ chmod +x /home/user/tools/android-sdk/cmdline-tools/latest/bin/apkanalyzer /home/user/tools/android-sdk/cmdline-tools/latest/bin/avdmanager /home/user/tools/android-sdk/cmdline-tools/latest/bin/lint /home/user/tools/android-sdk/cmdline-tools/latest/bin/profgen /home/user/tools/android-sdk/cmdline-tools/latest/bin/resourceshrinker /home/user/tools/android-sdk/cmdline-tools/latest/bin/retrace /home/user/tools/android-sdk/cmdline-tools/latest/bin/screenshot2 /home/user/tools/android-sdk/cmdline-tools/latest/bin/sdkmanager
++ yes
++ /home/user/tools/android-sdk/cmdline-tools/latest/bin/sdkmanager --licenses
++ tail -5
++ /home/user/tools/android-sdk/cmdline-tools/latest/bin/sdkmanager platform-tools 'platforms;android-35' 'build-tools;35.0.0' 'build-tools;34.0.0'
+"/home/user/tools/android-sdk/platforms/android-35" but 
+it already exists.
+Installing in "/home/user/tools/android-sdk/platforms/android-35-2" instead.
+[=====================                  ] 55% Installing Android SDK Platform 35[=====================                  ] 55% Downloading platform-35_r02.zip...[======================                 ] 55% Downloading platform-35_r02.zip...[======================                 ] 56% Downloading platform-35_r02.zip...[======================                 ] 57% Downloading platform-35_r02.zip...[=======================                ] 58% Downloading platform-35_r02.zip...[=======================                ] 59% Downloading platform-35_r02.zip...[=======================                ] 60% Downloading platform-35_r02.zip...[========================               ] 60% Downloading platform-35_r02.zip...[========================               ] 61% Downloading platform-35_r02.zip...[========================               ] 61% Unzipping... android-15/renderscri[========================               ] 61% Unzipping... android-35/android-st[========================               ] 61% Unzipping... android-35/android.ja[========================               ] 62% Unzipping... android-35/android.ja[=========================              ] 63% Unzipping... android-35/android.ja[=========================              ] 63% Unzipping... android-35/build.prop[=========================              ] 63% Unzipping... android-35/core-for-s[=========================              ] 64% Unzipping... android-35/core-for-s[=========================              ] 64% Unzipping... android-35/framework.[=========================              ] 64% Unzipping... android-35/sdk.proper[=========================              ] 64% Unzipping... android-35/source.pro[=========================              ] 64% Unzipping... android-35/uiautomato[=========================              ] 64% Unzipping... android-35/data/NOTIC[=========================              ] 64% Unzipping... android-35/data/activ[=========================              ] 64% Unzipping... android-35/data/annot[=========================              ] 64% Unzipping... android-35/data/api-v[=========================              ] 64% Unzipping... android-35/data/broad[=========================              ] 64% Unzipping... android-35/data/categ[=========================              ] 64% Unzipping... android-35/data/featu[=========================              ] 64% Unzipping... android-35/data/servi[=========================              ] 64% Unzipping... android-35/data/widge[=========================              ] 64% Unzipping... android-35/data/res/a[=========================              ] 64% Unzipping... android-35/data/res/c[=========================              ] 64% Unzipping... android-35/data/res/d[=========================              ] 65% Unzipping... android-35/data/res/d[==========================             ] 65% Unzipping... android-35/data/res/d[==========================             ] 65% Unzipping... android-35/data/res/i[==========================             ] 65% Unzipping... android-35/data/res/l[==========================             ] 65% Unzipping... android-35/data/res/m[==========================             ] 65% Unzipping... android-35/data/res/r[==========================             ] 65% Unzipping... android-35/data/res/t[==========================             ] 65% Unzipping... android-35/data/res/v[==========================             ] 66% Unzipping... android-35/data/res/v[==========================             ] 66% Unzipping... android-35/data/res/x[==========================             ] 66% Unzipping... android-35/optional/a[==========================             ] 66% Unzipping... android-35/optional/o[==========================             ] 66% Unzipping... android-35/optional/l[==========================             ] 66% Unzipping... android-35/skins/NOTI[==========================             ] 66% Unzipping... android-35/skins/HVGA[==========================             ] 66% Unzipping... android-35/skins/QVGA[==========================             ] 66% Unzipping... android-35/skins/WQVG[==========================             ] 66% Unzipping... android-35/skins/WSVG[==========================             ] 66% Unzipping... android-35/skins/WVGA[==========================             ] 66% Unzipping... android-35/skins/WXGA[==========================             ] 66% Unzipping... android-35/templates/[==============================         ] 78% Unzipping... android-35/templates/[==============================         ] 78% Installing Android SDK Platform-To[==============================         ] 78% Downloading platform-tools_r37.0.1[===============================        ] 78% Downloading platform-tools_r37.0.1[===============================        ] 79% Downloading platform-tools_r37.0.1[===============================        ] 80% Downloading platform-tools_r37.0.1[================================       ] 80% Downloading platform-tools_r37.0.1[================================       ] 81% Downloading platform-tools_r37.0.1[================================       ] 82% Downloading platform-tools_r37.0.1[=================================      ] 83% Downloading platform-tools_r37.0.1[=================================      ] 83% Unzipping... android-35/templates/[=================================      ] 83% Unzipping... platform-tools/NOTICE[=================================      ] 83% Unzipping... platform-tools/adb   [=================================      ] 84% Unzipping... platform-tools/adb   [=================================      ] 85% Unzipping... platform-tools/adb   [==================================     ] 85% Unzipping... platform-tools/adb   [==================================     ] 86% Unzipping... platform-tools/adb   [==================================     ] 86% Unzipping... platform-tools/etc1to[==================================     ] 86% Unzipping... platform-tools/fastbo[==================================     ] 87% Unzipping... platform-tools/fastbo[==================================     ] 87% Unzipping... platform-tools/hprof-[==================================     ] 87% Unzipping... platform-tools/lib64/[==================================     ] 87% Unzipping... platform-tools/make_f[==================================     ] 87% Unzipping... platform-tools/mke2fs[===================================    ] 88% Unzipping... platform-tools/mke2fs[===================================    ] 88% Unzipping... platform-tools/source[===================================    ] 88% Unzipping... platform-tools/sqlite[===================================    ] 89% Unzipping... platform-tools/sqlite[=======================================] 100% Unzipping... platform-tools/sqlit
+
++ ls /home/user/tools/android-sdk/build-tools/35.0.0/
++ head -20
+renderscript
++ echo ANDROID_DONE
+ANDROID_DONE
++ echo '=== [3/4] wine ==='
+=== [3/4] wine ===
++ sudo apt-get update -qq
++ tail -2
++ sudo apt-get install -y -qq --no-install-recommends wine wine64 xvfb
++ tail -5
+Setting up wine64 (10.0~repack-6) ...
+Setting up wine (10.0~repack-6) ...
+Processing triggers for libc-bin (2.41-12+deb13u3) ...
+Processing triggers for hicolor-icon-theme (0.18-2) ...
+Processing triggers for wine (10.0~repack-6) ...
++ which wine
+/usr/bin/wine
++ wine --version
+it looks like wine32 is missing, you should install it.
+multiarch needs to be enabled first.  as root, please
+execute "dpkg --add-architecture i386 && apt-get update &&
+apt-get install wine32:i386"
+wine-10.0 (Debian 10.0~repack-6)
++ echo WINE_OK
+WINE_OK
++ echo '=== [4/4] done ==='
+=== [4/4] done ===
++ echo ALL_SETUP_COMPLETE
+ALL_SETUP_COMPLETE
